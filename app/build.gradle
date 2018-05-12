@@ -10,13 +10,16 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         //A valid API key for The Movie Database needs to be entered here for the app to run
-        buildConfigField "String" , "API_KEY" ,  "\"$THE_MOVIE_DATABASE_API_KEY\""
+        buildConfigField "String", "API_KEY", "\"$THE_MOVIE_DATABASE_API_KEY\""
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    sourceSets {
+        main { java.srcDirs = ['src/main/java'] }
     }
 }
 
