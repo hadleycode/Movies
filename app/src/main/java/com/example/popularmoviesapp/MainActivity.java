@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.popularmoviesapp.utilities.MoviesJsonUtils;
 import com.example.popularmoviesapp.utilities.NetworkUtils;
@@ -13,7 +14,7 @@ import com.example.popularmoviesapp.utilities.NetworkUtils;
 import java.net.URL;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MovieAdapter.MovieAdapterOnClickHandler {
 
     private RecyclerView mRecyclerView;
     private MovieAdapter mMovieAdapter;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setHasFixedSize(true);
 
-        mMovieAdapter = new MovieAdapter();
+        mMovieAdapter = new MovieAdapter(this);
         mRecyclerView.setAdapter(mMovieAdapter);
 
     }
@@ -45,6 +46,15 @@ public class MainActivity extends AppCompatActivity {
         Log.d("Url", "The URL is : " + builtUrl);
 
         new FetchMoviesTask().execute(builtUrl);
+    }
+
+    @Override
+    public void onClick(String movieTitle) {
+        Toast mToast;
+
+        mToast = Toast.makeText(this, movieTitle, Toast.LENGTH_SHORT);
+        mToast.show();
+
     }
 
     private class FetchMoviesTask extends AsyncTask<URL, Void, String[]> {

@@ -14,9 +14,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ImageViewHol
 
     private String[] mImageLinks;
 
-    public MovieAdapter() {
+    final private MovieAdapterOnClickHandler mClickHandler;
 
+    public interface MovieAdapterOnClickHandler {
+        void onClick(String movieTitle);
     }
+
+    public MovieAdapter(MovieAdapterOnClickHandler clickHandler) {
+        mClickHandler = clickHandler;
+    }
+
 
     @NonNull
     @Override
@@ -49,12 +56,20 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ImageViewHol
         notifyDataSetChanged();
     }
 
-    class ImageViewHolder extends RecyclerView.ViewHolder {
+    class ImageViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final ImageView listItemImageView;
 
         private ImageViewHolder(View view) {
             super(view);
             listItemImageView = itemView.findViewById(R.id.iv_movie_item);
+            view.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            int position = getAdapterPosition();
+            String title = mImageLinks[position];
+            mClickHandler.onClick(title);
         }
     }
 
