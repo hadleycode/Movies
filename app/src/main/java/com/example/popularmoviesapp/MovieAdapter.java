@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.squareup.picasso.Picasso;
+
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ImageViewHolder> {
 
     private String[] mImageLinks;
@@ -39,7 +41,14 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ImageViewHol
 
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
-      //  holder.listItemImageView.setImage(mImageLinks[position])
+        Context context = holder.listItemImageView.getContext();
+        ImageView imageView = holder.listItemImageView;
+
+        Picasso.with(context).load("https://image.tmdb.org/t/p/w185" + mImageLinks[0]).into(imageView);
+
+
+
+      // holder.listItemImageView.setImage(mImageLinks[position])
         //somethingsomething parsed from json
     }
 
@@ -52,7 +61,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ImageViewHol
 
     public void setImageLinks(String[] imageLinks) {
         mImageLinks = imageLinks;
-        //notify a change has been made?
+        notifyDataSetChanged();
     }
 
 

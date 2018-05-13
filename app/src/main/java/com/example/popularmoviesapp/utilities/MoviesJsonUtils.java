@@ -26,14 +26,14 @@ public final class MoviesJsonUtils {
 
         for (int i = 0; i < moviesArray.length(); i++) {
             String posterPath;
-            String title;
+//            String title;
 
             JSONObject movie = moviesArray.getJSONObject(i);
 
             posterPath = movie.getString(MDB_POSTER);
-            title = movie.getString(MDB_TITLE);
+//            title = movie.getString(MDB_TITLE);
 
-            parsedMovieData[i] = title + " = " + posterPath;
+            parsedMovieData[i] = posterPath;
         }
 
         return parsedMovieData;

@@ -36,14 +36,14 @@ public class MainActivity extends AppCompatActivity {
         loadMovieData();
 
 
-//        mRecyclerView = (RecyclerView) findViewById(R.id.rv_movie_grid);
-//        int numberOfCol = 2;
-//        GridLayoutManager layoutManager = new GridLayoutManager(this, numberOfCol);
-//        mRecyclerView.setLayoutManager(layoutManager);
-//        mRecyclerView.setHasFixedSize(true);
-//
-//        mMovieAdapter = new MovieAdapter();
-//        mRecyclerView.setAdapter(mMovieAdapter);
+        mRecyclerView = (RecyclerView) findViewById(R.id.rv_movie_grid);
+        int numberOfCol = 2;
+        GridLayoutManager layoutManager = new GridLayoutManager(this, numberOfCol);
+        mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setHasFixedSize(true);
+
+        mMovieAdapter = new MovieAdapter();
+        mRecyclerView.setAdapter(mMovieAdapter);
 
     }
 
@@ -81,9 +81,10 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String[] s) {
             int i = 0;
             while (i < s.length) {
-                testResponseTextView.append("\n " + s[i]);
+                testResponseTextView.append("\n" + s[i]);
                 i++;
             }
+            mMovieAdapter.setImageLinks(s);
         }
     }
 }
