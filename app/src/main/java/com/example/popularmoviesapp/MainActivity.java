@@ -35,12 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
         loadMovieData();
 
-        String[] testJsonParsing;
-        try {
-            testJsonParsing = MoviesJsonUtils.getImageLinksFromJson(this, jsonResponse);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
 //        mRecyclerView = (RecyclerView) findViewById(R.id.rv_movie_grid);
 //        int numberOfCol = 2;
@@ -64,25 +58,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //to implement
-    public class FetchMoviesTask extends AsyncTask<URL, Void, String> {
+    public class FetchMoviesTask extends AsyncTask<URL, Void, String[]> {
 
         @Override
-        protected String doInBackground(URL... urls) {
+        protected String[] doInBackground(URL... urls) {
             URL url = urls[0];
             String response = null;
             try {
                 response = NetworkUtils.getResponseFromHttpUrl(url);
-            } catch (IOException e) {
+
+                String[] testParsedJson = MoviesJsonUtils.getImageLinksFromJson(response);
+
+                return testParsedJson;
+            } catch (Exception e) {
                 e.printStackTrace();
+                return null;
             }
-            return response;
+
         }
 
         @Override
-        protected void onPostExecute(String s) {
-            if (s != null && !s.equals("")) {
-                testResponseTextView.setText(s);
-                jsonResponse = s;
+        protected void onPostExecute(String[] s) {
+            int i = 0;
+            while (i < s.length) {
+                testResponseTextView.append("\n " + s[i]);
+                i++;
             }
         }
     }
