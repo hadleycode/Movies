@@ -1,6 +1,5 @@
 package com.example.popularmoviesapp.utilities;
 
-import android.content.Context;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -11,12 +10,12 @@ public final class MoviesJsonUtils {
 
     public static String[] getImageLinksFromJson(String moviesJsonStr) throws JSONException {
         final String MDB_RESULTS = "results";
-        final String MDB_TITLE = "title";
+//        final String MDB_TITLE = "title";
         final String MDB_POSTER = "poster_path";
         final String MDB_POSTER_BASE_URL = "https://image.tmdb.org/t/p/";
         final String MDB_POSTER_SIZE = "w185";
 
-        String[] parsedMovieData = null;
+        String[] parsedMovieData;
 
         Log.d("Json", "The string to parse is " + moviesJsonStr);
 

@@ -18,23 +18,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ImageViewHol
 
     }
 
-    class ImageViewHolder extends RecyclerView.ViewHolder {
-        public final ImageView listItemImageView;
-
-        public ImageViewHolder(View view) {
-            super(view);
-            listItemImageView = itemView.findViewById(R.id.iv_movie_item);
-        }
-    }
-
     @NonNull
     @Override
     public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         int layoutId = R.layout.movie_grid_item;
         LayoutInflater inflater = LayoutInflater.from(context);
-        boolean shouldAttachToParentImmediately = false;
-        View view = inflater.inflate(layoutId, parent, shouldAttachToParentImmediately);
+        View view = inflater.inflate(layoutId, parent, false);
 
         return new ImageViewHolder(view);
     }
@@ -45,11 +35,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ImageViewHol
         ImageView imageView = holder.listItemImageView;
 
         Picasso.with(context).load(mImageLinks[position]).into(imageView);
-
-
-
-      // holder.listItemImageView.setImage(mImageLinks[position])
-        //somethingsomething parsed from json
     }
 
     @Override
@@ -62,6 +47,15 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ImageViewHol
     public void setImageLinks(String[] imageLinks) {
         mImageLinks = imageLinks;
         notifyDataSetChanged();
+    }
+
+    class ImageViewHolder extends RecyclerView.ViewHolder {
+        private final ImageView listItemImageView;
+
+        private ImageViewHolder(View view) {
+            super(view);
+            listItemImageView = itemView.findViewById(R.id.iv_movie_item);
+        }
     }
 
 
