@@ -44,7 +44,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ImageViewHol
         Context context = holder.listItemImageView.getContext();
         ImageView imageView = holder.listItemImageView;
 
-        Picasso.with(context).load("https://image.tmdb.org/t/p/w185" + mImageLinks[0]).into(imageView);
+        Picasso.with(context).load(mImageLinks[position]).into(imageView);
 
 
 

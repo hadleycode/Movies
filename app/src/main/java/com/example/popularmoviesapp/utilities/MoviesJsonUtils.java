@@ -13,6 +13,8 @@ public final class MoviesJsonUtils {
         final String MDB_RESULTS = "results";
         final String MDB_TITLE = "title";
         final String MDB_POSTER = "poster_path";
+        final String MDB_POSTER_BASE_URL = "https://image.tmdb.org/t/p/";
+        final String MDB_POSTER_SIZE = "w185";
 
         String[] parsedMovieData = null;
 
@@ -33,7 +35,7 @@ public final class MoviesJsonUtils {
             posterPath = movie.getString(MDB_POSTER);
 //            title = movie.getString(MDB_TITLE);
 
-            parsedMovieData[i] = posterPath;
+            parsedMovieData[i] = MDB_POSTER_BASE_URL + MDB_POSTER_SIZE + posterPath;
         }
 
         return parsedMovieData;
