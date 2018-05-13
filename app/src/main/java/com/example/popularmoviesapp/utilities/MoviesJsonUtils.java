@@ -13,25 +13,27 @@ public final class MoviesJsonUtils {
         final String MDB_TITLE = "title";
         final String MDB_POSTER = "poster_path";
 
-        String[] parsedMovieData;
+        String[] parsedMovieData = null;
 
-        JSONObject moviesJson = new JSONObject(moviesJsonStr);
 
-        JSONArray moviesArray = moviesJson.getJSONArray(MDB_RESULTS);
 
-        parsedMovieData = new String[moviesArray.length()];
+//        JSONObject moviesJson = new JSONObject(moviesJsonStr);
 
-        for (int i = 0; i < moviesArray.length(); i++) {
-            String posterPath;
-            String title;
+//        JSONArray moviesArray = moviesJson.getJSONArray(MDB_RESULTS);
 
-            JSONObject movie = moviesArray.getJSONObject(i);
+//        parsedMovieData = new String[moviesArray.length()];
 
-            posterPath = movie.getString(MDB_POSTER);
-            title = movie.getString(MDB_TITLE);
-
-            parsedMovieData[i] = title + " = " + posterPath;
-        }
+//        for (int i = 0; i < moviesArray.length(); i++) {
+//            String posterPath;
+//            String title;
+//
+//            JSONObject movie = moviesArray.getJSONObject(i);
+//
+//            posterPath = movie.getString(MDB_POSTER);
+//            title = movie.getString(MDB_TITLE);
+//
+//            parsedMovieData[i] = title + " = " + posterPath;
+//        }
 
         return parsedMovieData;
     }

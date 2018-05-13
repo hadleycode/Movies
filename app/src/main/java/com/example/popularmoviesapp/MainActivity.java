@@ -8,8 +8,10 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.TextView;
 
+import com.example.popularmoviesapp.utilities.MoviesJsonUtils;
 import com.example.popularmoviesapp.utilities.NetworkUtils;
 
+import org.json.JSONException;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private MovieAdapter mMovieAdapter;
 
     private TextView testResponseTextView;
+    private String jsonResponse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +32,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         testResponseTextView = (TextView) findViewById(R.id.tv_test_response);
+
         loadMovieData();
+
+        String[] testJsonParsing;
+        try {
+            testJsonParsing = MoviesJsonUtils.getImageLinksFromJson(this, jsonResponse);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
 //        mRecyclerView = (RecyclerView) findViewById(R.id.rv_movie_grid);
 //        int numberOfCol = 2;
@@ -71,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             if (s != null && !s.equals("")) {
                 testResponseTextView.setText(s);
+                jsonResponse = s;
             }
         }
     }
