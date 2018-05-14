@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ImageViewHolder> {
 
-    private String[] mImageLinks;
+    private Movie[] mMovies;
 
     final private MovieAdapterOnClickHandler mClickHandler;
 
@@ -40,19 +40,20 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ImageViewHol
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         Context context = holder.listItemImageView.getContext();
         ImageView imageView = holder.listItemImageView;
+        String imageLink = mMovies[position].getmPosterPath();
 
-        Picasso.with(context).load(mImageLinks[position]).into(imageView);
+        Picasso.with(context).load(imageLink).into(imageView);
     }
 
     @Override
     public int getItemCount() {
-        if (mImageLinks == null)
+        if (mMovies == null)
             return 0;
-        return mImageLinks.length;
+        return mMovies.length;
     }
 
-    public void setImageLinks(String[] imageLinks) {
-        mImageLinks = imageLinks;
+    public void setImageLinks(Movie[] movies) {
+        mMovies = movies;
         notifyDataSetChanged();
     }
 
@@ -68,7 +69,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ImageViewHol
         @Override
         public void onClick(View v) {
             int position = getAdapterPosition();
-            String title = mImageLinks[position];
+            String title = mMovies[position].getmTitle();
             mClickHandler.onClick(title);
         }
     }

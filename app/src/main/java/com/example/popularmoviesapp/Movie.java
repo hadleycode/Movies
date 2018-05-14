@@ -19,6 +19,58 @@ public class Movie implements Parcelable {
     private final String mOverview;
     private final String mReleaseDate;
 
+    public int getmVoteCount() {
+        return mVoteCount;
+    }
+
+    public int getmId() {
+        return mId;
+    }
+
+    public boolean ismVideo() {
+        return mVideo;
+    }
+
+    public double getmVoteAverage() {
+        return mVoteAverage;
+    }
+
+    public String getmTitle() {
+        return mTitle;
+    }
+
+    public double getmPopularity() {
+        return mPopularity;
+    }
+
+    public String getmPosterPath() {
+        return mPosterPath;
+    }
+
+    public String getmOriginalLanguage() {
+        return mOriginalLanguage;
+    }
+
+    public String getmOriginalTitle() {
+        return mOriginalTitle;
+    }
+
+    public String getmBackdropPath() {
+        return mBackdropPath;
+    }
+
+    public boolean ismAdult() {
+        return mAdult;
+    }
+
+    public String getmOverview() {
+        return mOverview;
+    }
+
+    public String getmReleaseDate() {
+        return mReleaseDate;
+    }
+
     public Movie(int mVoteCount, int mId, boolean mVideo, double mVoteAverage, String mTitle, double mPopularity, String mPosterPath, String mOriginalLanguage, String mOriginalTitle, String mBackdropPath, boolean mAdult, String mOverview, String mReleaseDate) {
         this.mVoteCount = mVoteCount;
         this.mId = mId;

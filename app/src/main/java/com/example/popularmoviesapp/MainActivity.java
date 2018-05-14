@@ -45,7 +45,14 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         URL builtUrl = NetworkUtils.buildUrl(sortBy);
         Log.d("Url", "The URL is : " + builtUrl);
 
-        new FetchMoviesTask().execute(builtUrl);
+        OnTaskCompleted onTaskCompleted = new OnTaskCompleted() {
+            @Override
+            public void onTaskCompleted(Movie[] movies) {
+                mMovieAdapter.setImageLinks(movies);
+            }
+        };
+
+        new FetchMoviesTask(onTaskCompleted).execute(builtUrl);
     }
 
     @Override
@@ -57,16 +64,22 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
     }
 
-    private class FetchMoviesTask extends AsyncTask<URL, Void, String[]> {
+    private class FetchMoviesTask extends AsyncTask<URL, Void, Movie[]> {
+
+        private final OnTaskCompleted mListener;
+
+        public FetchMoviesTask(OnTaskCompleted listener) {
+            mListener = listener;
+        }
 
         @Override
-        protected String[] doInBackground(URL... urls) {
+        protected Movie[] doInBackground(URL... urls) {
             URL url = urls[0];
             String response;
             try {
                 response = NetworkUtils.getResponseFromHttpUrl(url);
 
-                return MoviesJsonUtils.getImageLinksFromJson(response);
+                return MoviesJsonUtils.getMoviesFromJson(response);
             } catch (Exception e) {
                 e.printStackTrace();
                 return null;
@@ -75,8 +88,8 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         }
 
         @Override
-        protected void onPostExecute(String[] s) {
-            mMovieAdapter.setImageLinks(s);
+        protected void onPostExecute(Movie[] movies) {
+            mListener.onTaskCompleted(movies);
         }
     }
 }
