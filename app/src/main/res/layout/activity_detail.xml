@@ -28,7 +28,7 @@
 
     <LinearLayout
         android:id="@+id/ll_movie_info"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
@@ -36,6 +36,7 @@
         android:layout_marginStart="8dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/iv_poster"
         app:layout_constraintTop_toTopOf="@+id/iv_poster">
 
@@ -43,23 +44,31 @@
             android:id="@+id/tv_movie_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:textAlignment="center"
+            android:textSize="32sp"
             tools:text="Title" />
 
         <TextView
             android:id="@+id/tv_original_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             tools:text="Original Title" />
 
-        <TextView
+        <RatingBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Released: " />
+            android:layout_gravity="center"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:id="@+id/rb_movie_score"/>
+
 
         <TextView
             android:id="@+id/tv_release_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             tools:text="Release Date" />
 
     </LinearLayout>
