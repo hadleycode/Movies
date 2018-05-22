@@ -15,6 +15,7 @@ public final class MoviesJsonUtils {
     final static String MDB_POSTER = "poster_path";
     final static String MDB_POSTER_BASE_URL = "https://image.tmdb.org/t/p/";
     final static String MDB_POSTER_SIZE = "w185";
+    final static String MDB_POSTER_SPLASH_SIZE = "w342";
     final static String MDB_VOTE_COUNT = "vote_count";
     final static String MDB_ID = "id";
     final static String MDB_VIDEO = "video";
@@ -52,11 +53,11 @@ public final class MoviesJsonUtils {
             posterPath = MDB_POSTER_BASE_URL + MDB_POSTER_SIZE + movie.optString(MDB_POSTER);
             originalLanguage = movie.optString(MDB_ORIGINAL_LANGUAGE);
             originalTitle = movie.optString(MDB_ORIGINAL_TITLE);
-            backdropPath = movie.optString(MDB_BACKDROP_PATH);
+            backdropPath = MDB_POSTER_BASE_URL + MDB_POSTER_SPLASH_SIZE + movie.optString(MDB_BACKDROP_PATH);
             overview = movie.optString(MDB_OVERVIEW);
             releaseDate = movie.optString(MD_RELEASE_DATE);
 
-            parsedMovies[i] = new Movie(voteCount, id, video, voteAverage, title, popularity, posterPath, originalLanguage, title, backdropPath, adult, overview, releaseDate);
+            parsedMovies[i] = new Movie(voteCount, id, video, voteAverage, title, popularity, posterPath, originalLanguage, originalTitle, backdropPath, adult, overview, releaseDate);
         }
 
         return parsedMovies;
