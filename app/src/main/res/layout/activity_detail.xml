@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/iv_poster_splash"
         android:layout_width="fill_parent"
-        android:layout_height="250dp"
+        android:layout_height="220dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -47,16 +47,19 @@
             android:layout_gravity="center_horizontal"
             android:textAlignment="center"
             android:textSize="22sp"
-            tools:text="Title" />
+            tools:text="Title"
+            android:paddingBottom="4dp"/>
 
         <TextView
             android:id="@+id/tv_original_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            tools:text="Original Title" />
+            tools:text="Original Title"
+            android:padding="4dp"/>
 
         <RatingBar
+            android:padding="4dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -64,6 +67,7 @@
             android:id="@+id/rb_movie_score"/>
 
         <TextView
+            android:padding="4dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_average_score"
@@ -71,8 +75,8 @@
             android:textSize="35sp"
             tools:text="7.5 / 10"/>
 
-
         <TextView
+            android:padding="4dp"
             android:id="@+id/tv_release_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -83,14 +87,18 @@
 
     <TextView
         android:id="@+id/tv_overview"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_poster"
-        tools:text="Overview" />
+        tools:text="Overview"
+        android:textStyle="bold"/>
 
 
 
