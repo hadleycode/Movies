@@ -26,6 +26,7 @@ public class DetailActivity extends AppCompatActivity {
         ImageView posterImageView = findViewById(R.id.iv_poster);
         ImageView splashPosterImageView = findViewById(R.id.iv_poster_splash);
         RatingBar movieScoreRatingBar = findViewById(R.id.rb_movie_score);
+        TextView averageScoreTextView = findViewById(R.id.tv_average_score);
 
         Intent intent = getIntent();
         Movie movie = intent.getParcelableExtra("movie");
@@ -45,7 +46,9 @@ public class DetailActivity extends AppCompatActivity {
         Log.d("Splash Image", splashImageLink);
 
         float average = (float) movie.getmVoteAverage();
-        movieScoreRatingBar.setRating(average);
+        movieScoreRatingBar.setRating(average / 2);
+
+        averageScoreTextView.setText(String.valueOf(movie.getmVoteAverage()) + " / 10");
 
 
         Picasso.with(context).load(imageLink).into(posterImageView);
