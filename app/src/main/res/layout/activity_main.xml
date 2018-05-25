@@ -17,4 +17,20 @@
         android:layout_height="match_parent"
         android:id="@+id/rv_movie_grid"/>
 
+    <TextView
+        android:id="@+id/tv_error_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:visibility="gone"
+        android:padding="16dp"
+        android:text="Please connect your device to the Internet"/>
+    <Button
+        android:id="@+id/button_reload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="center"
+        android:text="Try Again"/>
+
 </FrameLayout>

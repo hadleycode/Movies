@@ -13,7 +13,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.popularmoviesapp.utilities.MoviesJsonUtils;
@@ -27,14 +29,18 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     private RecyclerView mRecyclerView;
     private MovieAdapter mMovieAdapter;
     private ProgressBar mProgressBar;
+    private TextView mErrorMessage;
+    private Button mReloadButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mProgressBar = (ProgressBar) findViewById(R.id.pb_loading);
+        mProgressBar = findViewById(R.id.pb_loading);
         mRecyclerView = findViewById(R.id.rv_movie_grid);
+        mErrorMessage = findViewById(R.id.tv_error_message);
+        mReloadButton = findViewById(R.id.button_reload);
 
         loadMovieData("popular");
 
@@ -68,6 +74,8 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     }
 
     private void showLoading() {
+        mReloadButton.setVisibility(View.GONE);
+        mErrorMessage.setVisibility(View.GONE);
         mRecyclerView.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.VISIBLE);
     }
@@ -88,7 +96,16 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     }
 
     private void showNetworkError() {
+        mProgressBar.setVisibility(View.GONE);
+        mErrorMessage.setVisibility(View.VISIBLE);
+        mReloadButton.setVisibility(View.VISIBLE);
 
+        mReloadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadMovieData("popular");
+            }
+        });
     }
 
     @Override
