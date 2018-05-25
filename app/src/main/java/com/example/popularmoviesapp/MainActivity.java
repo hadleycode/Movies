@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     private ProgressBar mProgressBar;
     private TextView mErrorMessage;
     private Button mReloadButton;
+    private String sortBy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +44,12 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         mErrorMessage = findViewById(R.id.tv_error_message);
         mReloadButton = findViewById(R.id.button_reload);
 
-        loadMovieData("popular");
+        if (savedInstanceState != null) {
+            sortBy = savedInstanceState.getString("sortBy");
+        } else
+            sortBy = "popular";
+
+        loadMovieData(sortBy);
 
         int numberOfCol = 2;
         GridLayoutManager layoutManager = new GridLayoutManager(this, numberOfCol);
@@ -103,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         mReloadButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadMovieData("popular");
+                loadMovieData(sortBy);
             }
         });
     }
@@ -154,10 +161,18 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     public boolean onOptionsItemSelected(MenuItem item) {
         int popularity = R.id.action_sort_popularity;
 
-        if (item.getItemId() == popularity) {
-            loadMovieData("popular");
-        } else
-            loadMovieData("top_rated");
+        if (item.getItemId() == popularity)
+            sortBy = "popular";
+        else
+            sortBy = "top_rated";
+
+        loadMovieData(sortBy);
         return true;
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("sortBy", sortBy);
     }
 }
