@@ -10,24 +10,24 @@ import org.json.JSONObject;
 
 public final class MoviesJsonUtils {
 
-    final static String MDB_RESULTS = "results";
-    final static String MDB_TITLE = "title";
-    final static String MDB_POSTER = "poster_path";
-    final static String MDB_POSTER_BASE_URL = "https://image.tmdb.org/t/p/";
-    final static String MDB_POSTER_SIZE = "w185";
-    final static String MDB_POSTER_SPLASH_SIZE = "w342";
-    final static String MDB_VOTE_COUNT = "vote_count";
-    final static String MDB_ID = "id";
-    final static String MDB_VIDEO = "video";
-    final static String MDB_VOTE_AVERAGE = "vote_average";
-    final static String MDB_POPULARITY = "popularity";
-    final static String MDB_ORIGINAL_LANGUAGE = "original_language";
-    final static String MDB_ORIGINAL_TITLE = "original_title";
+    private final static String MDB_RESULTS = "results";
+    private final static String MDB_TITLE = "title";
+    private final static String MDB_POSTER = "poster_path";
+    private final static String MDB_POSTER_BASE_URL = "https://image.tmdb.org/t/p/";
+    private final static String MDB_POSTER_SIZE = "w185";
+    private final static String MDB_POSTER_SPLASH_SIZE = "w342";
+    private final static String MDB_VOTE_COUNT = "vote_count";
+    private final static String MDB_ID = "id";
+    private final static String MDB_VIDEO = "video";
+    private final static String MDB_VOTE_AVERAGE = "vote_average";
+    private final static String MDB_POPULARITY = "popularity";
+    private final static String MDB_ORIGINAL_LANGUAGE = "original_language";
+    private final static String MDB_ORIGINAL_TITLE = "original_title";
  //   final static String MDB_GENRE_IDS = "genre_ids";
-    final static String MDB_BACKDROP_PATH = "backdrop_path";
-    final static String MDB_ADULT = "adult";
-    final static String MDB_OVERVIEW = "overview";
-    final static String MD_RELEASE_DATE = "release_date";
+    private final static String MDB_BACKDROP_PATH = "backdrop_path";
+    private final static String MDB_ADULT = "adult";
+    private final static String MDB_OVERVIEW = "overview";
+    private final static String MD_RELEASE_DATE = "release_date";
 
     public static Movie[] getMoviesFromJson(String moviesJsonStr) throws JSONException {
         Movie[] parsedMovies;
@@ -63,33 +63,6 @@ public final class MoviesJsonUtils {
         return parsedMovies;
 
 
-    }
-
-    public static String[] getImageLinksFromJson(String moviesJsonStr) throws JSONException {
-
-        String[] parsedMovieData;
-
-        Log.d("Json", "The string to parse is " + moviesJsonStr);
-
-        JSONObject moviesJson = new JSONObject(moviesJsonStr);
-
-        JSONArray moviesArray = moviesJson.getJSONArray(MDB_RESULTS);
-
-        parsedMovieData = new String[moviesArray.length()];
-
-        for (int i = 0; i < moviesArray.length(); i++) {
-            String posterPath;
-//            String title;
-
-            JSONObject movie = moviesArray.getJSONObject(i);
-
-            posterPath = movie.getString(MDB_POSTER);
-//            title = movie.getString(MDB_TITLE);
-
-            parsedMovieData[i] = MDB_POSTER_BASE_URL + MDB_POSTER_SIZE + posterPath;
-        }
-
-        return parsedMovieData;
     }
 
 }

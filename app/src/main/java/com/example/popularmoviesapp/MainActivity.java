@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     /* The isOnline function was taken from a Response by Gar on StackOverflow
     https://stackoverflow.com/questions/1560788/how-to-check-internet-access-on-android-inetaddress-never-times-out
      */
-    public boolean isOnline() {
+    private boolean isOnline() {
         ConnectivityManager cm =
                 (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
@@ -122,11 +122,11 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         startActivity(detailIntent);
     }
 
-    private class FetchMoviesTask extends AsyncTask<URL, Void, Movie[]> {
+    private static class FetchMoviesTask extends AsyncTask<URL, Void, Movie[]> {
 
         private final OnTaskCompleted mListener;
 
-        public FetchMoviesTask(OnTaskCompleted listener) {
+        FetchMoviesTask(OnTaskCompleted listener) {
             mListener = listener;
         }
 

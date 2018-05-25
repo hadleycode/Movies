@@ -19,17 +19,23 @@ public class Movie implements Parcelable {
     private final String mOverview;
     private final String mReleaseDate;
 
-    public int getmVoteCount() {
-        return mVoteCount;
-    }
+// --Commented out by Inspection START (5/25/18, 5:53 PM):
+//    public int getmVoteCount() {
+//        return mVoteCount;
+//    }
+// --Commented out by Inspection STOP (5/25/18, 5:53 PM)
 
-    public int getmId() {
-        return mId;
-    }
+// --Commented out by Inspection START (5/25/18, 5:53 PM):
+//    public int getmId() {
+//        return mId;
+//    }
+// --Commented out by Inspection STOP (5/25/18, 5:53 PM)
 
-    public boolean ismVideo() {
-        return mVideo;
-    }
+// --Commented out by Inspection START (5/25/18, 5:53 PM):
+//    public boolean ismVideo() {
+//        return mVideo;
+//    }
+// --Commented out by Inspection STOP (5/25/18, 5:53 PM)
 
     public double getmVoteAverage() {
         return mVoteAverage;
@@ -39,17 +45,21 @@ public class Movie implements Parcelable {
         return mTitle;
     }
 
-    public double getmPopularity() {
-        return mPopularity;
-    }
+// --Commented out by Inspection START (5/25/18, 5:53 PM):
+//    public double getmPopularity() {
+//        return mPopularity;
+//    }
+// --Commented out by Inspection STOP (5/25/18, 5:53 PM)
 
     public String getmPosterPath() {
         return mPosterPath;
     }
 
-    public String getmOriginalLanguage() {
-        return mOriginalLanguage;
-    }
+// --Commented out by Inspection START (5/25/18, 5:53 PM):
+//    public String getmOriginalLanguage() {
+//        return mOriginalLanguage;
+//    }
+// --Commented out by Inspection STOP (5/25/18, 5:53 PM)
 
     public String getmOriginalTitle() {
         return mOriginalTitle;
@@ -59,9 +69,11 @@ public class Movie implements Parcelable {
         return mBackdropPath;
     }
 
-    public boolean ismAdult() {
-        return mAdult;
-    }
+// --Commented out by Inspection START (5/25/18, 5:53 PM):
+//    public boolean ismAdult() {
+//        return mAdult;
+//    }
+// --Commented out by Inspection STOP (5/25/18, 5:53 PM)
 
     public String getmOverview() {
         return mOverview;
@@ -89,7 +101,7 @@ public class Movie implements Parcelable {
     }
 
 
-    protected Movie(Parcel in) {
+    private Movie(Parcel in) {
         mVoteCount = in.readInt();
         mId = in.readInt();
         mVideo = in.readByte() != 0;

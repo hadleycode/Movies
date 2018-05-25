@@ -1,5 +1,5 @@
 package com.example.popularmoviesapp;
 
-public interface OnTaskCompleted {
+interface OnTaskCompleted {
     void onTaskCompleted(Movie[] movies);
 }
