@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.popularmoviesapp.utilities.MoviesJsonUtils;
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loadMovieData();
+        loadMovieData("popular");
 
         mRecyclerView = findViewById(R.id.rv_movie_grid);
         int numberOfCol = 2;
@@ -39,9 +41,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
     }
 
-    private void loadMovieData() {
-        //Can be changed to "top_rated"
-        String sortBy = "popular";
+    private void loadMovieData(String sortBy) {
 
         URL builtUrl = NetworkUtils.buildUrl(sortBy);
         Log.d("Url", "The URL is : " + builtUrl);
@@ -90,5 +90,22 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
         protected void onPostExecute(Movie[] movies) {
             mListener.onTaskCompleted(movies);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int popularity = R.id.action_sort_popularity;
+
+        if (item.getItemId() == popularity) {
+            loadMovieData("popular");
+        } else
+            loadMovieData("top_rated");
+        return true;
     }
 }
