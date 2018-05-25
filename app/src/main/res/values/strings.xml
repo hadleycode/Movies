@@ -1,4 +1,13 @@
 <resources>
     <string name="app_name">Popular Movies App</string>
     <string name="movie_poster">Movie Poster</string>
+    <string name="connect_device_to_internet">Please connect your device to the Internet</string>
+    <string name="try_again">Try Again</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="most_popular">Most Popular</string>
+    <string name="overview">Overview :</string>
+    <string name="released">Released :</string>
+    <string name="out_of_ten">/ 10</string>
+    <string name="movie_poster_for">Movie poster for</string>
+    <string name="large_movie_poster_for">Large movie poster for</string>
 </resources>
