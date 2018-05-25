@@ -40,8 +40,10 @@ public class DetailActivity extends AppCompatActivity {
         } else
             originalTitleTextView.setText(movie.getmOriginalTitle());
 
-        overviewTextView.setText(getString(R.string.overview) + movie.getmOverview());
-        releaseDateTextView.setText(getString(R.string.released) + movie.getmReleaseDate());
+        overviewTextView.setText(getString(R.string.overview));
+        overviewTextView.append(movie.getmOverview());
+        releaseDateTextView.setText(getString(R.string.released));
+        releaseDateTextView.append(movie.getmReleaseDate());
 
         Context context = DetailActivity.this;
         String imageLink = movie.getmPosterPath();
@@ -51,7 +53,8 @@ public class DetailActivity extends AppCompatActivity {
         float average = (float) movie.getmVoteAverage();
         movieScoreRatingBar.setRating(average / 2);
 
-        averageScoreTextView.setText(String.valueOf(movie.getmVoteAverage()) + getString(R.string.out_of_ten));
+        averageScoreTextView.setText(String.valueOf(movie.getmVoteAverage()));
+        averageScoreTextView.append(getString(R.string.out_of_ten));
 
 
         Picasso.with(context).load(imageLink).into(posterImageView);

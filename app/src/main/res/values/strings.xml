@@ -5,8 +5,8 @@
     <string name="try_again">Try Again</string>
     <string name="top_rated">Top Rated</string>
     <string name="most_popular">Most Popular</string>
-    <string name="overview">Overview :</string>
-    <string name="released">Released :</string>
+    <string name="overview">Overview : </string>
+    <string name="released">Released : </string>
     <string name="out_of_ten">/ 10</string>
     <string name="movie_poster_for">Movie poster for</string>
     <string name="large_movie_poster_for">Large movie poster for</string>

@@ -18,9 +18,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/large_movie_poster_for"
         android:scaleType="fitXY"/>
 
     <ImageView
+        android:contentDescription="@string/movie_poster_for"
         android:id="@+id/iv_poster"
         android:layout_width="150dp"
         android:layout_height="200dp"
