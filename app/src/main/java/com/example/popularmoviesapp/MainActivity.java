@@ -1,6 +1,9 @@
 package com.example.popularmoviesapp;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.popularmoviesapp.utilities.MoviesJsonUtils;
@@ -21,16 +26,18 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
 
     private RecyclerView mRecyclerView;
     private MovieAdapter mMovieAdapter;
-
+    private ProgressBar mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mProgressBar = (ProgressBar) findViewById(R.id.pb_loading);
+        mRecyclerView = findViewById(R.id.rv_movie_grid);
+
         loadMovieData("popular");
 
-        mRecyclerView = findViewById(R.id.rv_movie_grid);
         int numberOfCol = 2;
         GridLayoutManager layoutManager = new GridLayoutManager(this, numberOfCol);
         mRecyclerView.setLayoutManager(layoutManager);
@@ -42,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
     }
 
     private void loadMovieData(String sortBy) {
-
+        showLoading();
         URL builtUrl = NetworkUtils.buildUrl(sortBy);
         Log.d("Url", "The URL is : " + builtUrl);
 
@@ -50,10 +57,38 @@ public class MainActivity extends AppCompatActivity implements MovieAdapter.Movi
             @Override
             public void onTaskCompleted(Movie[] movies) {
                 mMovieAdapter.setImageLinks(movies);
+                hideLoading();
             }
         };
 
-        new FetchMoviesTask(onTaskCompleted).execute(builtUrl);
+        if (isOnline()) {
+            new FetchMoviesTask(onTaskCompleted).execute(builtUrl);
+        } else
+            showNetworkError();
+    }
+
+    private void showLoading() {
+        mRecyclerView.setVisibility(View.GONE);
+        mProgressBar.setVisibility(View.VISIBLE);
+    }
+
+    private void hideLoading() {
+        mProgressBar.setVisibility(View.GONE);
+        mRecyclerView.setVisibility(View.VISIBLE);
+    }
+
+    /* The isOnline function was taken from a Response by Gar on StackOverflow
+    https://stackoverflow.com/questions/1560788/how-to-check-internet-access-on-android-inetaddress-never-times-out
+     */
+    public boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo netInfo = cm.getActiveNetworkInfo();
+        return netInfo != null && netInfo.isConnectedOrConnecting();
+    }
+
+    private void showNetworkError() {
+
     }
 
     @Override
