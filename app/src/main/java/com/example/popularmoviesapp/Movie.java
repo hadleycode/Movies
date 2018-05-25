@@ -46,7 +46,7 @@ public class Movie implements Parcelable {
     }
 
 // --Commented out by Inspection START (5/25/18, 5:53 PM):
-//    public double getmPopularity() {
+//    public double getPopularity() {
 //        return mPopularity;
 //    }
 // --Commented out by Inspection STOP (5/25/18, 5:53 PM)
