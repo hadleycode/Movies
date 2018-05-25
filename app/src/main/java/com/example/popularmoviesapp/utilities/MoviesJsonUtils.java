@@ -21,7 +21,7 @@ public final class MoviesJsonUtils {
     private final static String MDB_POPULARITY = "popularity";
     private final static String MDB_ORIGINAL_LANGUAGE = "original_language";
     private final static String MDB_ORIGINAL_TITLE = "original_title";
- //   final static String MDB_GENRE_IDS = "genre_ids";
+    //   final static String MDB_GENRE_IDS = "genre_ids";
     private final static String MDB_BACKDROP_PATH = "backdrop_path";
     private final static String MDB_ADULT = "adult";
     private final static String MDB_OVERVIEW = "overview";
@@ -30,7 +30,7 @@ public final class MoviesJsonUtils {
     public static Movie[] getMoviesFromJson(String moviesJsonStr) throws JSONException {
         Movie[] parsedMovies;
         int voteCount, id;
-    //    int[] genreIds;
+        //    int[] genreIds;
         boolean video, adult;
         double voteAverage, popularity;
         String title, posterPath, originalLanguage, originalTitle, backdropPath, overview, releaseDate;

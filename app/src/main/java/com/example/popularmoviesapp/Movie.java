@@ -13,7 +13,7 @@ public class Movie implements Parcelable {
     private final String mPosterPath;
     private final String mOriginalLanguage;
     private final String mOriginalTitle;
- //   private final int[] mGenreIds;
+    //   private final int[] mGenreIds;
     private final String mBackdropPath;
     private final boolean mAdult;
     private final String mOverview;
@@ -93,7 +93,7 @@ public class Movie implements Parcelable {
         this.mPosterPath = mPosterPath;
         this.mOriginalLanguage = mOriginalLanguage;
         this.mOriginalTitle = mOriginalTitle;
-   //     this.mGenreIds = mGenreIds;
+        //     this.mGenreIds = mGenreIds;
         this.mBackdropPath = mBackdropPath;
         this.mAdult = mAdult;
         this.mOverview = mOverview;
@@ -111,7 +111,7 @@ public class Movie implements Parcelable {
         mPosterPath = in.readString();
         mOriginalLanguage = in.readString();
         mOriginalTitle = in.readString();
-  //      mGenreIds = in.createIntArray();
+        //      mGenreIds = in.createIntArray();
         mBackdropPath = in.readString();
         mAdult = in.readByte() != 0;
         mOverview = in.readString();
@@ -147,7 +147,7 @@ public class Movie implements Parcelable {
         dest.writeString(mPosterPath);
         dest.writeString(mOriginalLanguage);
         dest.writeString(mOriginalTitle);
-     //   dest.writeIntArray(mGenreIds);
+        //   dest.writeIntArray(mGenreIds);
         dest.writeString(mBackdropPath);
         dest.writeByte((byte) (mAdult ? 1 : 0));
         dest.writeString(mOverview);

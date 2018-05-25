@@ -56,12 +56,9 @@ public class DetailActivity extends AppCompatActivity {
         averageScoreTextView.setText(String.valueOf(movie.getVoteAverage()));
         averageScoreTextView.append(getString(R.string.out_of_ten));
 
-
         Picasso.with(context).load(imageLink).into(posterImageView);
         posterImageView.setContentDescription(getString(R.string.movie_poster_for) + movie.getTitle());
         Picasso.with(context).load(splashImageLink).into(splashPosterImageView);
         splashPosterImageView.setContentDescription(getString(R.string.large_movie_poster_for) + movie.getTitle());
-
-
     }
 }
