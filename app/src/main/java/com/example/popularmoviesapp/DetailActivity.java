@@ -34,33 +34,33 @@ public class DetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Movie movie = intent.getParcelableExtra("movie");
 
-        movieTitleTextView.setText(movie.getmTitle());
-        if (movie.getmTitle().equals(movie.getmOriginalTitle())) {
+        movieTitleTextView.setText(movie.getTitle());
+        if (movie.getTitle().equals(movie.getOriginalTitle())) {
             originalTitleTextView.setVisibility(View.GONE);
         } else
-            originalTitleTextView.setText(movie.getmOriginalTitle());
+            originalTitleTextView.setText(movie.getOriginalTitle());
 
         overviewTextView.setText(getString(R.string.overview));
-        overviewTextView.append(movie.getmOverview());
+        overviewTextView.append(movie.getOverview());
         releaseDateTextView.setText(getString(R.string.released));
-        releaseDateTextView.append(movie.getmReleaseDate());
+        releaseDateTextView.append(movie.getReleaseDate());
 
         Context context = DetailActivity.this;
-        String imageLink = movie.getmPosterPath();
-        String splashImageLink = movie.getmBackdropPath();
+        String imageLink = movie.getPosterPath();
+        String splashImageLink = movie.getBackdropPath();
         Log.d("Splash Image", splashImageLink);
 
-        float average = (float) movie.getmVoteAverage();
+        float average = (float) movie.getVoteAverage();
         movieScoreRatingBar.setRating(average / 2);
 
-        averageScoreTextView.setText(String.valueOf(movie.getmVoteAverage()));
+        averageScoreTextView.setText(String.valueOf(movie.getVoteAverage()));
         averageScoreTextView.append(getString(R.string.out_of_ten));
 
 
         Picasso.with(context).load(imageLink).into(posterImageView);
-        posterImageView.setContentDescription(getString(R.string.movie_poster_for) + movie.getmTitle());
+        posterImageView.setContentDescription(getString(R.string.movie_poster_for) + movie.getTitle());
         Picasso.with(context).load(splashImageLink).into(splashPosterImageView);
-        splashPosterImageView.setContentDescription(getString(R.string.large_movie_poster_for) + movie.getmTitle());
+        splashPosterImageView.setContentDescription(getString(R.string.large_movie_poster_for) + movie.getTitle());
 
 
     }

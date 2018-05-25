@@ -40,7 +40,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ImageViewHol
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
         Context context = holder.listItemImageView.getContext();
         ImageView imageView = holder.listItemImageView;
-        String imageLink = mMovies[position].getmPosterPath();
+        String imageLink = mMovies[position].getPosterPath();
 
         Picasso.with(context).load(imageLink).into(imageView);
     }

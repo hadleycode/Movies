@@ -20,28 +20,28 @@ public class Movie implements Parcelable {
     private final String mReleaseDate;
 
 // --Commented out by Inspection START (5/25/18, 5:53 PM):
-//    public int getmVoteCount() {
+//    public int getVoteCount() {
 //        return mVoteCount;
 //    }
 // --Commented out by Inspection STOP (5/25/18, 5:53 PM)
 
 // --Commented out by Inspection START (5/25/18, 5:53 PM):
-//    public int getmId() {
+//    public int getId() {
 //        return mId;
 //    }
 // --Commented out by Inspection STOP (5/25/18, 5:53 PM)
 
 // --Commented out by Inspection START (5/25/18, 5:53 PM):
-//    public boolean ismVideo() {
+//    public boolean isVideo() {
 //        return mVideo;
 //    }
 // --Commented out by Inspection STOP (5/25/18, 5:53 PM)
 
-    public double getmVoteAverage() {
+    public double getVoteAverage() {
         return mVoteAverage;
     }
 
-    public String getmTitle() {
+    public String getTitle() {
         return mTitle;
     }
 
@@ -51,35 +51,35 @@ public class Movie implements Parcelable {
 //    }
 // --Commented out by Inspection STOP (5/25/18, 5:53 PM)
 
-    public String getmPosterPath() {
+    public String getPosterPath() {
         return mPosterPath;
     }
 
 // --Commented out by Inspection START (5/25/18, 5:53 PM):
-//    public String getmOriginalLanguage() {
+//    public String getOriginalLanguage() {
 //        return mOriginalLanguage;
 //    }
 // --Commented out by Inspection STOP (5/25/18, 5:53 PM)
 
-    public String getmOriginalTitle() {
+    public String getOriginalTitle() {
         return mOriginalTitle;
     }
 
-    public String getmBackdropPath() {
+    public String getBackdropPath() {
         return mBackdropPath;
     }
 
 // --Commented out by Inspection START (5/25/18, 5:53 PM):
-//    public boolean ismAdult() {
+//    public boolean isAdult() {
 //        return mAdult;
 //    }
 // --Commented out by Inspection STOP (5/25/18, 5:53 PM)
 
-    public String getmOverview() {
+    public String getOverview() {
         return mOverview;
     }
 
-    public String getmReleaseDate() {
+    public String getReleaseDate() {
         return mReleaseDate;
     }
 

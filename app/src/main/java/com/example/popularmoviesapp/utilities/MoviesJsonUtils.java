@@ -1,7 +1,5 @@
 package com.example.popularmoviesapp.utilities;
 
-import android.util.Log;
-
 import com.example.popularmoviesapp.Movie;
 
 import org.json.JSONArray;
